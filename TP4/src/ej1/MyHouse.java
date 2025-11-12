@@ -8,10 +8,10 @@ package ej1;
  * 3. Al método open le falta el parámetro tipo File (firma incorrecta)
  */
 
-public class MyHouse implements House {
-    public void open() {}
+// public class MyHouse implements House {
+//     public void open() {}
 
-    public void openFrontDoor(){}
+//     public void openFrontDoor(){}
 
-    public void openBackDoor(){}
-}
+//     public void openBackDoor(){}
+// }
