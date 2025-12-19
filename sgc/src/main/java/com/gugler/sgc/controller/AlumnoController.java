@@ -18,6 +18,7 @@ import com.gugler.sgc.modelo.Alumno;
 import com.gugler.sgc.service.AlumnoService;
 
 import io.swagger.v3.oas.annotations.Operation;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/alumnos")
@@ -39,16 +40,14 @@ public class AlumnoController {
     @Operation(summary = "Obtener un alumno por id")
     @GetMapping("/{id}")
     public ResponseEntity<Alumno> findStudentById(@PathVariable("id") Long id) {
-        var alumnoOpt = this.alumnoService.findById(id);
-        if (alumnoOpt.isEmpty()) {
-            return ResponseEntity.notFound().build();
-        } 
-        return ResponseEntity.ok(alumnoOpt.get());
+        return alumnoService.findById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @Operation(summary = "Crear un alumno")
     @PostMapping
-    public ResponseEntity<Long> createStudent(@RequestBody AlumnoDTO alumno) {
+    public ResponseEntity<Long> createStudent(@Valid @RequestBody AlumnoDTO alumno) {
         Alumno newStudent = new Alumno();
         newStudent.setNumeroDocumento(alumno.numeroDocumento);
         newStudent.setApellido(alumno.apellido);
@@ -65,7 +64,7 @@ public class AlumnoController {
 
     @Operation(summary = "Actualizar un alumno")
     @PutMapping("/{id}")
-    public ResponseEntity<String> updateStudent(@PathVariable Long id, @RequestBody AlumnoDTO alumnoDTO) {
+    public ResponseEntity<String> updateStudent(@PathVariable Long id, @Valid @RequestBody AlumnoDTO alumnoDTO) {
         Optional<Alumno> alumnoOpt = alumnoService.findById(id);
         if (alumnoOpt.isEmpty()) {
             return ResponseEntity.notFound().build();

@@ -20,6 +20,7 @@ import com.gugler.sgc.service.AsignaturaService;
 import com.gugler.sgc.service.ProfesorService;
 
 import io.swagger.v3.oas.annotations.Operation;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/asignaturas")
@@ -50,7 +51,7 @@ public class AsignaturaController {
 
     @Operation(summary = "Crear un curso")
     @PostMapping("/cursos")
-    public ResponseEntity<?> createCurso(@RequestBody AsignaturaDTO asignaturaDTO) {
+    public ResponseEntity<?> createCurso(@Valid @RequestBody AsignaturaDTO asignaturaDTO) {
         Curso curso = new Curso();
         curso.setCodigo(asignaturaDTO.codigo);
         curso.setNombre(asignaturaDTO.nombre);
@@ -87,7 +88,7 @@ public class AsignaturaController {
 
     @Operation(summary = "Crear una materia")
     @PostMapping("/materias")
-    public ResponseEntity<?> createMateria(@RequestBody AsignaturaDTO asignaturaDTO) {
+    public ResponseEntity<?> createMateria(@Valid @RequestBody AsignaturaDTO asignaturaDTO) {
         Materia materia = new Materia();
         materia.setCodigo(asignaturaDTO.codigo);
         materia.setNombre(asignaturaDTO.nombre);

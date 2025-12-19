@@ -18,6 +18,7 @@ import com.gugler.sgc.modelo.Profesor;
 import com.gugler.sgc.service.ProfesorService;
 
 import io.swagger.v3.oas.annotations.Operation;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/profesores")
@@ -43,7 +44,7 @@ public class ProfesorController {
 
     @Operation(summary = "Crear un profesor")
     @PostMapping
-    public ResponseEntity<Profesor> crear(@RequestBody ProfesorDTO profesorDTO) {
+    public ResponseEntity<Profesor> create(@Valid @RequestBody ProfesorDTO profesorDTO) {
         Profesor p = new Profesor();
         p.setNombres(profesorDTO.nombres);
         p.setApellido(profesorDTO.apellido);
@@ -61,7 +62,7 @@ public class ProfesorController {
 
     @Operation(summary = "Actualizar un profesor")
     @PutMapping("/{id}")
-    public ResponseEntity<String> update(@PathVariable Long id, @RequestBody ProfesorDTO profesorDTO) {
+    public ResponseEntity<String> update(@PathVariable Long id, @Valid @RequestBody ProfesorDTO profesorDTO) {
         Optional<Profesor> profesorOpt = profesorService.findById(id);
         if (profesorOpt.isEmpty()) {
             return ResponseEntity.notFound().build();
