@@ -1,6 +1,6 @@
 package com.gugler.sgc.modelo;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Objects;
 
 import jakarta.persistence.Entity;
@@ -12,12 +12,12 @@ import jakarta.persistence.Table;
 @PrimaryKeyJoinColumn(name = "id")
 public class Profesor extends Persona {
     private String cuil; 
-    private Date fechaIngreso;
+    private LocalDate fechaIngreso;
 
     public Profesor() {
     }
     
-    public Profesor(String cuil, Date fechaIngreso, String numeroDocumento, String apellido, String nombres, Date fechaNacimiento, String domicilio, String telefono, String correoElectronico) {
+    public Profesor(String cuil, LocalDate fechaIngreso, String numeroDocumento, String apellido, String nombres, LocalDate fechaNacimiento, String domicilio, String telefono, String correoElectronico) {
         super(numeroDocumento, apellido, nombres, fechaNacimiento, domicilio, telefono, correoElectronico);
         this.cuil = cuil;
         this.fechaIngreso = fechaIngreso;
@@ -37,11 +37,11 @@ public class Profesor extends Persona {
         this.cuil = cuil;
     }
 
-    public Date getFechaIngreso() {
+    public LocalDate getFechaIngreso() {
         return fechaIngreso;
     }
 
-    public void setFechaIngreso(Date fechaIngreso) {
+    public void setFechaIngreso(LocalDate fechaIngreso) {
         this.fechaIngreso = fechaIngreso;
     }
 

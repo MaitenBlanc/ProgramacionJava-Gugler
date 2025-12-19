@@ -1,6 +1,6 @@
 package com.gugler.sgc.modelo;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Objects;
 
 import jakarta.persistence.Entity;
@@ -16,7 +16,7 @@ public class Alumno extends Persona {
     public Alumno() {
     }
     
-    public Alumno(String legajo, String numeroDocumento, String apellido, String nombres, Date fechaNacimiento, String domicilio, String telefono, String correoElectronico) {
+    public Alumno(String legajo, String numeroDocumento, String apellido, String nombres, LocalDate fechaNacimiento, String domicilio, String telefono, String correoElectronico) {
         super(numeroDocumento, apellido, nombres, fechaNacimiento, domicilio, telefono, correoElectronico);
         this.legajo = legajo;
     }

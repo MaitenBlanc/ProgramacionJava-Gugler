@@ -1,6 +1,6 @@
 package com.gugler.sgc.modelo;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Objects;
 
 import jakarta.persistence.Entity;
@@ -25,7 +25,7 @@ public abstract class Persona {
     private String numeroDocumento;
     private String apellido;
     private String nombres;
-    private Date fechaNacimiento;
+    private LocalDate fechaNacimiento;
     private String domicilio;
     private String telefono;
     private String correoElectronico;
@@ -33,7 +33,7 @@ public abstract class Persona {
     public Persona() {
     }
 
-    public Persona(String numeroDocumento, String apellido, String nombres, Date fechaNacimiento, String domicilio,
+    public Persona(String numeroDocumento, String apellido, String nombres, LocalDate fechaNacimiento, String domicilio,
             String telefono, String correoElectronico) {
         this.numeroDocumento = numeroDocumento;
         this.apellido = apellido;
@@ -79,11 +79,11 @@ public abstract class Persona {
         this.nombres = nombres;
     }
 
-    public Date getFechaNacimiento() {
+    public LocalDate getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(Date fechaNacimiento) {
+    public void setFechaNacimiento(LocalDate fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 
